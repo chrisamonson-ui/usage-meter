@@ -32,15 +32,15 @@ function resetText(iso: string | undefined, now: number): string {
   return `resets in ${Math.floor(hours / 24)}d ${hours % 24}h`
 }
 
-export const register: Register = on => {
-  async function refresh($: EngineInterface) {
-    const usage = await $.session.usage()
-    await update($, limits, () => usage.rateLimits.map(l => ({ ...l })))
-  }
+async function refresh($: EngineInterface) {
+  const usage = await $.session.usage()
+  await update($, limits, () => usage.rateLimits.map(l => ({ ...l })))
+}
 
+export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
-      name: 'usage',
+      name: 'usage-meter',
       description: 'Show your 5-hour and weekly usage in a pane',
     })
     const ran = await next(e)
@@ -50,7 +50,7 @@ export const register: Register = on => {
     return ran
   })
 
-  on('command.run', { command: 'usage' }, async $ => {
+  on('command.run', { command: 'usage-meter' }, async $ => {
     await refresh($)
     await $.ui.open({ id: PANE, title: TITLE })
 

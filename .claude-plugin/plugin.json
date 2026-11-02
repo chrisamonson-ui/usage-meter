@@ -1,6 +1,7 @@
 {
   "name": "usage-meter",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "license": "MIT",
   "description": "A pane showing your 5-hour and weekly Claude usage limits",
   "types": "./types/index.d.ts"
 }

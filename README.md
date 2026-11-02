@@ -1,6 +1,6 @@
 # usage-meter
 
-A Claude Code pane that shows your current 5-hour session limit and your weekly (7-day) limit, with reset times. Reopen it with `/usage`.
+A Claude Code pane that shows your current 5-hour session limit and your weekly (7-day) limit, with reset times. Reopen it with `/usage-meter`.
 
 ## Install
 
